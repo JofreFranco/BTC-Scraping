@@ -9,5 +9,8 @@ def coin2dic(filename):
         coin_name = os.path.splitext(coin_name)[0]
         coin = {"Name": coin_name}
         for row in csv_reader:
-            coin[row[0]] = [float(value) for value in row[1:]]
+            name = row[0]
+            row.pop(0)
+            row.reverse()
+            coin[name] = [float(value) for value in row]
         return coin
